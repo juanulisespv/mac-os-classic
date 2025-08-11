@@ -163,6 +163,69 @@ if (calendarMenu) {
     calendarMenu.addEventListener('click', openCalendarWindow);
 }
 
+
+// Funcion para crear chat
+function openChatWindow() {
+    let chatWindow = document.getElementById('chat-window');
+    if (chatWindow) {
+        chatWindow.style.display = 'block';
+        return;
+    }
+    chatWindow = document.createElement('div');
+    chatWindow.className = 'window';
+    chatWindow.id = 'chat-window';
+    chatWindow.style.top = '100px';
+    chatWindow.style.left = '100px';
+    chatWindow.style.width = '600px';
+    chatWindow.style.height = 'auto';
+    chatWindow.innerHTML = `
+        <div class="window-header">
+            <div class="window-buttons">
+                <button class="close-btn"></button>
+                <button class="min-btn"></button>
+                <button class="max-btn"></button>
+            </div>
+            <span class="window-title">Chat</span>
+        </div>
+        <div class="window-content">
+            
+            <iframe src="https://chat-git-main-juan-ulises-projects.vercel.app/"></iframe>
+            <div id="chat"></div>
+        </div>
+    `;
+    document.body.appendChild(chatWindow);
+    makeWindowDraggable(chatWindow);
+    // Botones de ventana
+    const closeBtn = chatWindow.querySelector('.close-btn');
+    const minBtn = chatWindow.querySelector('.min-btn');
+    const maxBtn = chatWindow.querySelector('.max-btn');
+    closeBtn.addEventListener('click', () => {
+        chatWindow.style.display = 'none';
+    });
+    minBtn.addEventListener('click', () => {
+        chatWindow.style.display = 'none';
+    });
+    maxBtn.addEventListener('click', () => {
+        if (chatWindow.classList.contains('maximized')) {
+            chatWindow.classList.remove('maximized');
+            chatWindow.style.width = '500px';
+            chatWindow.style.height = 'auto';
+        } else {
+            chatWindow.classList.add('maximized');
+        }
+    });
+}
+
+// Menú para abrir chat
+const chatMenu = document.getElementById('chat-menu');
+if (chatMenu) {
+    chatMenu.addEventListener('click', openChatWindow);
+}
+
+
+
+
+
 function updateDateTime() {
     const now = new Date();
     const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };

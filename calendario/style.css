@@ -1,0 +1,39 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    text-align: center;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+#calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    max-width: 500px;
+    margin: auto;
+}
+
+.day, .day-name {
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.day-name {
+    font-weight: bold;
+    background: #ddd;
+}
+
+.event {
+    background: #ffeb3b;
+    font-weight: bold;
+    cursor: pointer;
+}
